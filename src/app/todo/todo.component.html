@@ -1,0 +1,83 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm" >
+    <h4 class="my-0 mr-md-auto font-weight-normal " >Какое-то название  <i class="fa fa-trello fa-lg"></i></h4>
+   
+    <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link " routerLink="/">Главная</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" routerLink="/list">Список дел</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/about">О пограмме</a>
+    </li>
+   
+  </ul>
+</div>
+
+<div class="jumbotron col-md-6 offset-md-3"  >
+<main role="main" class="inner cover">
+    <h4 class="text-center">Список дел</h4>
+        
+    
+    
+      <div class="input-group">
+          <input class="form-control" type="text" placeholder="Новая задача..." #itemTitle>
+        
+        <div class="input-group-addon hover-cursor" (click)="onAdd(itemTitle)">
+          <i class="fa fa-edit fa-2x"></i>
+          
+        </div>
+      </div>
+      
+      <div style="margin:5px 0px">
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let item of toDoListArray">
+            <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked)">
+              <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-circle':'fa-circle-o'"></i>
+            </span>
+            {{item.title}}
+            <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
+              <i class="fa fa-close fa-lg"></i>
+            </span>
+          </li>
+        </ul>
+      </div>
+      <p align="center" class="lead">Для добаления новой задачи нажмите - <i class="fa fa-edit "></i></p>
+      <p align="center" class="lead"> Для удаления задачи нажмите - <i class="fa fa-close "></i></p>
+      <p align="center" class="lead"> Задача еще не выполнена(что бы изменить статус, нажмите на иконку перед задачей), если перед ней стоит знак - <i class="fa fa-circle-o "></i></p>
+    
+  </main>
+ 
+</div>
+
+<!--
+  <div  class="jumbotron" style="padding:45px 0px">
+    <h4 class="text-center">Список дел</h4>
+  </div>
+  
+
+
+  <div class="input-group">
+      <input class="form-control" type="text" placeholder="Новая задача..." #itemTitle>
+    
+    <div class="input-group-addon hover-cursor" (click)="onAdd(itemTitle)">
+      <i class="fa fa-edit fa-2x"></i>
+      
+    </div>
+  </div>
+  
+  <div style="margin:5px 0px">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of toDoListArray">
+        <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked)">
+          <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-circle':'fa-circle-o'"></i>
+        </span>
+        {{item.title}}
+        <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
+          <i class="fa fa-close fa-lg"></i>
+        </span>
+      </li>
+    </ul>
+  </div>
+-->
